@@ -1,11 +1,19 @@
-import React from 'react';
+import React from 'react'
 
-const ImgCard = () => {
+function ImgCard({image}) {
+    
     return (
-        <div>
+        <>
+            <div className='w-full bg-slate-200 imgCard'>
+                <a href={image.webformatURL} target="new">
+                    <img src={image.webformatURL} alt="" className='w-full img' />
+                    </a>
             
-        </div>
-    );
-};
+                <p className='to-top text-white' >{image.tags}</p>
+               
+            </div>
+        </>
+    )
+}
 
-export default ImgCard;
+export default ImgCard

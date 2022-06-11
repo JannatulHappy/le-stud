@@ -1,3 +1,24 @@
+.imgCard {
+  color: white;
+  position: relative;
+}
+.img {
+    height: 250px;
+  }
+.to-top {
+  background-color: black;
+  color: white;
+  height: 50px;
+  position: absolute;
+  top: 200px;
+  width: 354px;
+  padding-left: 15px;
+  opacity: 45%;
+}
+.img {
+  height: 250px;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
