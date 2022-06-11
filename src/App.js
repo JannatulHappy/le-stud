@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import ImgCard from "./components/ImgCard/ImgCard";
 
@@ -6,18 +7,19 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [searchText, setSearchText] = useState("");
 
-  useEffect(() => {
-    fetch(
-      `https://pixabay.com/api/?key=27977448-cb1418e46f83739e49588977f&q=${searchText}&image_type=photo&pretty=true`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setImages(data.hits);
-        setIsLoading(false);
-      })
-      .catch((err) => console.log(err));
-  }, [searchText]);
 
+  useEffect(() => {
+    const loadPost = async () => {
+        setIsLoading(true);
+        const response = await axios.get(
+        `https://pixabay.com/api/?key=27977448-cb1418e46f83739e49588977f&q=${searchText}&image_type=photo&pretty=true`);
+        setImages(response.data.hits);
+        setIsLoading(false);
+    }
+
+    // Call the function
+    loadPost();
+}, [searchText]);
   return (
     <div className="bg-black">
       <div className="w-screen flex items-center justify-center h-40 bg-black fixed inset-0 z-50">
